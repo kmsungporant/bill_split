@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60), child: BaseAppBar()),
+            preferredSize: const Size.fromHeight(60), child: BaseAppBar(headerStr: "Bill Split")),
       body: Container(
         alignment: Alignment.center,
         child: Column(
