@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BaseAppBar extends StatelessWidget {
-  BaseAppBar({
-    super.key,
-  });
+  String headerStr = "Bill Split";
+  BaseAppBar({super.key, required this.headerStr});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text("Bill Split"),
+      title: Text(headerStr),
       backgroundColor: Colors.brown,
       automaticallyImplyLeading: true,
     );

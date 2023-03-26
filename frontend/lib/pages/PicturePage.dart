@@ -2,12 +2,11 @@ import 'dart:ui';
 
 import 'package:bill_split/api/request.dart';
 import 'package:bill_split/models/Bill.dart';
+import 'package:bill_split/pages/Contacts.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
-import 'package:path/path.dart';
 import '../models/Item.dart';
 import 'widget/BaseAppBar.dart';
 
@@ -35,55 +34,93 @@ class _ImagePickerState extends State<ImagePick> {
 
   @override
   Widget build(BuildContext context) {
+    if (!textScanning && imageFile == null) {}
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(60), child: BaseAppBar()),
+            preferredSize: const Size.fromHeight(60),
+            child: BaseAppBar(headerStr: "Upload Receipt")),
         body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           if (!textScanning && imageFile == null)
             Container(
               width: 100,
               height: 100,
             ),
-          if (imageFile != null) Image.file(File(imageFile!.path)),
-          const Text("Select your receipt",
+          if (imageFile != null)
+            Image.file(
+              File(imageFile!.path),
+              height: 500,
+              width: 500,
+            ),
+          const Text("Select Your Receipt",
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 32)),
-          Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              padding: const EdgeInsets.only(top: 10),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.brown,
-                  shadowColor: Colors.black,
-                  elevation: 10,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0)),
-                ),
-                onPressed: () {
-                  getImage(ImageSource.gallery);
-                },
-                child: Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(
-                        Icons.image,
-                        size: 50,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.brown,
+                      shadowColor: Colors.black,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0)),
+                    ),
+                    onPressed: () {
+                      getImage(ImageSource.gallery);
+                    },
+                    child: Column(
+                      children: [
+                        const Icon(Icons.image, size: 50),
+                        Text(
+                          "Browse Photos",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  )),
+              if (imageFile != null)
+                Container(
+                    alignment: Alignment.bottomCenter,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.only(top: 10),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.brown,
+                        shadowColor: Colors.black,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
                       ),
-                      Text(
-                        "Gallery",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400),
-                      )
-                    ],
-                  ),
-                ),
-              ))
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Contacts()),
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          const Icon(Icons.send, size: 50),
+                          const Text(
+                            "Submit",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          )
+                        ],
+                      ),
+                    ))
+            ],
+          )
         ]));
   }
 

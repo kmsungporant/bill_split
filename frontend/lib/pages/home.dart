@@ -1,6 +1,5 @@
-import 'package:bill_split/pages/PicturePage.dart';
 import 'package:flutter/material.dart';
-
+import 'LoginPage.dart';
 import 'widget/BaseAppBar.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +9,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60), child: BaseAppBar()),
+          preferredSize: const Size.fromHeight(60),
+          child: BaseAppBar(headerStr: "Bill Split")),
       body: Container(
         alignment: Alignment.center,
         child: Column(
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PicturePage()),
+                            builder: (context) => const LoginPage()),
                       );
                     }))
           ],
