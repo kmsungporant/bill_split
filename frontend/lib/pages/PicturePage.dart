@@ -1,14 +1,11 @@
 import 'dart:ui';
-
 import 'package:bill_split/models/Bill.dart';
+import 'package:bill_split/pages/Contacts.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
-import 'package:path/path.dart';
 import '../models/Item.dart';
-import 'ContactsInfo.dart';
 import 'widget/BaseAppBar.dart';
 
 class PicturePage extends StatelessWidget {
@@ -104,13 +101,13 @@ class _ImagePickerState extends State<ImagePick> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ContactInfo()),
+                              builder: (context) => const Contacts()),
                         );
                       },
                       child: Column(
                         children: [
                           const Icon(Icons.send, size: 50),
-                          Text(
+                          const Text(
                             "Submit",
                             style: TextStyle(
                                 fontSize: 16,
