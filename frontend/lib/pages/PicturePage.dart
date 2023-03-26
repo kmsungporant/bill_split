@@ -31,6 +31,7 @@ class _ImagePickerState extends State<ImagePick> {
   Map<int, String> lineMap = {};
   XFile? imageFile;
   String scannedText = "";
+  late Bill newBill;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +104,8 @@ class _ImagePickerState extends State<ImagePick> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Contacts()),
+                              builder: (context) =>
+                                  Contacts(currBill: newBill)),
                         );
                       },
                       child: Column(
@@ -160,8 +162,8 @@ class _ImagePickerState extends State<ImagePick> {
       }
     }
     // Creates bill given line map
-    Bill bill = createBill(lineMap);
-    request.postBill(bill);
+    newBill = createBill(lineMap);
+    request.postBill(newBill);
     // request.getBill();
     lineMap.clear();
     textScanning = false;

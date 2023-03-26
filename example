@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "quantity": 1,
+            "name": "'FRIES",
+            "price": 2.26
+        },
+        {
+            "quantity": 1,
+            "name": "'BOX COMBO\"",
+            "price": 10.59
+        },
+        {
+            "quantity": 1,
+            "name": "'3 FINGER COMBO'",
+            "price": 8.99
+        },
+        {
+            "quantity": 1,
+            "name": "'CANES SAUCE",
+            "price": 0.39
+        }
+    ],
+    "tax": 2.62,
+    "subtotal": 22.23
+}
