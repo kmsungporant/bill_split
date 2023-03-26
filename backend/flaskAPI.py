@@ -23,6 +23,17 @@ def parse_items():
     
 if __name__ == '__main__':
     app.run(debug=True)
+# class Bill():
 
-class Bill():
-    s
+
+def total():
+    global orders
+    '''
+    returns the total of the bill
+    '''
+    total = 0.0
+    for order in orders:
+        total += order.price
+    total += tax
+    total += tip
+    return total

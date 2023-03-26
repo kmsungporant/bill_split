@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-                child: const Text('Welcome!',
+                child: const Text('Welcome',
                     style: TextStyle(
                         fontSize: 42,
                         color: Colors.black,

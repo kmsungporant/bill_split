@@ -14,9 +14,10 @@ def venmo_setup():
     own_obj = venmo.user.get_my_profile()         #self user object
 
 class make_friend():
-    def __init__(self, name, pfp):
+    def __init__(self, name, pfp, user_id):
         self.name = name
         self.pfp = pfp
+        self.user_id = user_id
 
 
 def venmo_friends():
@@ -27,10 +28,10 @@ def venmo_friends():
     friends = venmo.user.get_user_friends_list(user = own_obj)
     friends_list =[]
     for friend in friends:
-        obj = make_friend(name = friend.display_name , pfp = friend.profile_picture_url)
+        obj = make_friend(name = friend.display_name , pfp = friend.profile_picture_url, user_id=friend.user_id)
         friends_list.append(obj)
     return friends_list
 
 def venmo_requests(amt, nte:str, friends_list):
     for friend in friends_list:
-        venmo.payment.request_money(amount = amt, note=nte, target_user= friend)
+        venmo.payment.request_money(amount = amt, note=nte, target_user_id= friend.user_id)
