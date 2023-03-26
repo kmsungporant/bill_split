@@ -190,6 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     for (String line in lineMap.values) {
       if (line.toUpperCase().contains("TAX")) {
+        
         scannedText += line + "\n\n";
         break;
       }
