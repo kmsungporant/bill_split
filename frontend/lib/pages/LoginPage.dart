@@ -1,6 +1,7 @@
-import 'package:bill_split/pages/AuthPage.dart';
+import 'package:bill_split/pages/PicturePage.dart';
 import 'package:flutter/material.dart';
 import 'widget/BaseAppBar.dart';
+import 'package:bill_split/api/request.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -25,7 +26,6 @@ class _ContactState extends State<ContactFetch> {
 // var to store
 // onChanged callback
   String userName = "No Value Entered";
-  String password = "No Value Entered";
 
   @override
   Widget build(BuildContext context) {
@@ -48,20 +48,9 @@ class _ContactState extends State<ContactFetch> {
                   border: OutlineInputBorder(),
                   labelText: 'UserName',
                 ),
-                
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-              child: TextField(
-                onChanged: (value) => password = value,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
-              ),
-            ),
+           
             Container(
                 alignment: Alignment.bottomCenter,
                 margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -75,12 +64,12 @@ class _ContactState extends State<ContactFetch> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0)),
                   ),
+                  // ON SUBMISSION FORM
                   onPressed: () {
-                    print(userName);
-                    print(password);
+                    request.postAccount(userName);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const AuthPage()),
+                      MaterialPageRoute(builder: (context) => const PicturePage()),
                     );
                   },
                   child: Column(
