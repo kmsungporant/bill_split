@@ -1,10 +1,13 @@
 import 'dart:ui';
 
+import 'package:bill_split/models/Bill.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:path/path.dart';
+import '../models/Item.dart';
 import 'widget/BaseAppBar.dart';
 
 class PicturePage extends StatelessWidget {
@@ -85,14 +88,12 @@ class _ImagePickerState extends State<ImagePick> {
 
   void getImage(ImageSource source) async {
     try {
-      // print("Getting image from gallery");
       final pickedImage = await ImagePicker().pickImage(source: source);
       if (pickedImage != null) {
         textScanning = true;
         imageFile = pickedImage;
         setState(() {});
-        // print("Image path: " + "pickedImage.path");
-        // getRecognisedText(pickedImage);
+        getRecognizedText(pickedImage);
       }
     } catch (e) {
       textScanning = false;
@@ -114,22 +115,15 @@ class _ImagePickerState extends State<ImagePick> {
       // 'BOX COMBO'
       for (TextLine line in block.lines) {
         // if entry exists, will append to existing string. If not, will create new entry
-
         lineMap.update(
             handleCoordinateEstimation(lineMap, line.cornerPoints[0].y),
             (value) => line.text + ";" + value,
             ifAbsent: () => line.text);
       }
     }
-    for (String line in lineMap.values) {
-      if (line.toUpperCase().contains("TAX")) {
-        scannedText += line + "\n\n";
-        break;
-      } else if (RegExp(r'(\d+)\.(\d{2})', caseSensitive: false)
-          .hasMatch(line)) {
-        scannedText += line + "\n\n";
-      }
-    }
+    // Creates bill given line map
+    Bill bill = createBill(lineMap);
+    print(bill);
     lineMap.clear();
     textScanning = false;
     setState(() {});
@@ -144,6 +138,36 @@ class _ImagePickerState extends State<ImagePick> {
     }
 
     return y;
+  }
+
+  // Parses line into Item object
+  Item createItem(String line) {
+    final splitString = line.split(";");
+    if (splitString.length == 2) {
+      return Item(1, splitString[0], double.parse(splitString[1]));
+    } else if (splitString.length == 3) {
+      return Item(int.parse(splitString[1]), splitString[2],
+          double.parse(splitString[0]));
+    }
+    return Item(1, "Error, please try again", 0.0);
+  }
+
+  Bill createBill(Map<int, String> lineMap) {
+    List<Item> itemList = [];
+    double tax = 0, subTotal = 0;
+    for (String line in lineMap.values) {
+      final Item item = createItem(line);
+      if (line.toUpperCase().contains("TAX")) {
+        tax = item.price;
+        break;
+      } else if (line.toUpperCase().contains("SUBTOTAL")) {
+        subTotal = item.price;
+      } else if (RegExp(r'(\d+)\.(\d{2})', caseSensitive: false)
+          .hasMatch(line)) {
+        itemList.add(item);
+      }
+    }
+    return Bill(itemList, tax, subTotal);
   }
 
   @override
