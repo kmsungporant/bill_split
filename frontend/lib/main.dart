@@ -189,7 +189,11 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     }
     for (String line in lineMap.values) {
-      if (RegExp(r'[0-9]+.[0-9]{2}').hasMatch(line) || line.toUpperCase().contains("TAX")) {
+      if (line.toUpperCase().contains("TAX")) {
+        scannedText += line + "\n\n";
+        break;
+      }
+      else if (RegExp(r'(\d+)\.(\d{2})', caseSensitive: false).hasMatch(line)) {
         scannedText += line + "\n\n";
       }
     }
