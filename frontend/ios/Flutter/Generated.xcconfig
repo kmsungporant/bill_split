@@ -1,8 +1,8 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/opt/homebrew/Caskroom/flutter/3.3.7/flutter
-FLUTTER_APPLICATION_PATH=/Users/danle/Dev/Hackathon/HooHacks2023/bill_split/frontend
+FLUTTER_ROOT=/opt/homebrew/Caskroom/flutter/2.8.0/flutter
+FLUTTER_APPLICATION_PATH=/Users/minsungkim/dev/HooHacks/bill_split/frontend
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Users/danle/Dev/Hackathon/HooHacks2023/bill_split/frontend/lib/main.dart
+FLUTTER_TARGET=/Users/minsungkim/dev/HooHacks/bill_split/frontend/lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
@@ -12,4 +12,4 @@ DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=/Users/danle/Dev/Hackathon/HooHacks2023/bill_split/frontend/.dart_tool/package_config.json
+PACKAGE_CONFIG=/Users/minsungkim/dev/HooHacks/bill_split/frontend/.dart_tool/package_config.json
