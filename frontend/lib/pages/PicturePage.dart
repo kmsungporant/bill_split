@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:bill_split/api/request.dart';
 import 'package:bill_split/models/Bill.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -123,7 +124,8 @@ class _ImagePickerState extends State<ImagePick> {
     }
     // Creates bill given line map
     Bill bill = createBill(lineMap);
-    print(bill);
+    request.postBill(bill);
+    // request.getBill();
     lineMap.clear();
     textScanning = false;
     setState(() {});
