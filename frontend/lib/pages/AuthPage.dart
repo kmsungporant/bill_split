@@ -35,7 +35,7 @@ class AuthPage extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.brown,
+                    backgroundColor: Colors.lightGreen,
                     shadowColor: Colors.black,
                     elevation: 10,
                     shape: RoundedRectangleBorder(

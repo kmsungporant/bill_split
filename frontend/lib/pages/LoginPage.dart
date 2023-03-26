@@ -48,7 +48,6 @@ class _ContactState extends State<ContactFetch> {
                   border: OutlineInputBorder(),
                   labelText: 'UserName',
                 ),
-                
               ),
             ),
             Padding(
@@ -69,7 +68,7 @@ class _ContactState extends State<ContactFetch> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.brown,
+                    backgroundColor: Colors.lightGreen,
                     shadowColor: Colors.black,
                     elevation: 10,
                     shape: RoundedRectangleBorder(

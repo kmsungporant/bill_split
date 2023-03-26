@@ -7,8 +7,9 @@ class BaseAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(headerStr),
-      backgroundColor: Colors.brown,
+      title: Text(headerStr, style: TextStyle(color: Colors.black)),
+      iconTheme: IconThemeData(color: Colors.black),
+      backgroundColor: Colors.lightGreen[100],
       automaticallyImplyLeading: true,
     );
   }
