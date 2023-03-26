@@ -1,5 +1,4 @@
 PODS:
-
   - camera_avfoundation (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -71,7 +70,6 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
-
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -79,7 +77,6 @@ PODS:
   - Protobuf (3.22.1)
 
 DEPENDENCIES:
-
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - Flutter (from `Flutter`)
   - google_mlkit_commons (from `.symlinks/plugins/google_mlkit_commons/ios`)
@@ -105,7 +102,6 @@ SPEC REPOS:
     - Protobuf
 
 EXTERNAL SOURCES:
-
   camera_avfoundation:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
   Flutter:
@@ -116,7 +112,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_mlkit_text_recognition/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
-
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
 

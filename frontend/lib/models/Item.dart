@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Item {
   late int quantity;
   late String name;
@@ -15,5 +17,10 @@ class Item {
     data['name'] = name;
     data['price'] = price;
     return data;
+  }
+
+  @override
+  String toString() {
+    return jsonEncode(toJson());
   }
 }

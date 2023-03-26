@@ -12,7 +12,6 @@
 @import camera_avfoundation;
 #endif
 
-
 #if __has_include(<google_mlkit_commons/GoogleMlKitCommonsPlugin.h>)
 #import <google_mlkit_commons/GoogleMlKitCommonsPlugin.h>
 #else
