@@ -34,6 +34,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool textScanning = false;
 
+  // Map to hold line strings
+  Map<int, String> lineMap = {};
+
   XFile? imageFile;
   String scannedText = "";
 
@@ -156,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
         imageFile = pickedImage;
         setState(() {});
         print("Image path: " + "pickedImage.path");
-        getRecognisedText(pickedImage);
+        getRecognizedText(pickedImage);
       }
     } catch (e) {
       textScanning = false;
@@ -166,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void getRecognisedText(XFile image) async {
+  void getRecognizedText(XFile image) async {
     final inputImage = InputImage.fromFilePath(image.path);
     final TextRecognizer textRecognizer =
         TextRecognizer(script: TextRecognitionScript.latin);
@@ -175,12 +178,35 @@ class _MyHomePageState extends State<MyHomePage> {
     await textRecognizer.close();
     scannedText = "";
     for (TextBlock block in recognizedText.blocks) {
+      // 'BOX COMBO'
       for (TextLine line in block.lines) {
-        scannedText = scannedText + line.text + "\n";
+        // if entry exists, will append to existing string. If not, will create new entry
+
+        lineMap.update(
+            handleCoordinateEstimation(lineMap, line.cornerPoints[0].y),
+            (value) => line.text + ";" + value,
+            ifAbsent: () => line.text);
       }
     }
+    for (String line in lineMap.values) {
+      if (RegExp(r'[0-9]+.[0-9]{2}').hasMatch(line) || line.toUpperCase().contains("TAX")) {
+        scannedText += line + "\n\n";
+      }
+    }
+    lineMap.clear();
     textScanning = false;
     setState(() {});
+  }
+
+  // Handles coordinate estimation for lineMap
+  int handleCoordinateEstimation(Map<int, String> lineMap, int y) {
+    for (int key in lineMap.keys) {
+      if ((key - y).abs() < 15) {
+        return key;
+      }
+    }
+
+    return y;
   }
 
   @override
