@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton(
                     style: const ButtonStyle(
                       backgroundColor:
-                          MaterialStatePropertyAll<Color>(Colors.brown),
+                          MaterialStatePropertyAll<Color>(Colors.lightGreen),
                     ),
                     child: const Text(
                       'Get Started!',

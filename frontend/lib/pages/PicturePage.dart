@@ -52,8 +52,8 @@ class _ImagePickerState extends State<ImagePick> {
               padding: const EdgeInsets.only(top: 10),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.lightGreen,
+                  backgroundColor: Colors.white,
                   shadowColor: Colors.black,
                   elevation: 10,
                   shape: RoundedRectangleBorder(
@@ -76,7 +76,7 @@ class _ImagePickerState extends State<ImagePick> {
                         "Gallery",
                         style: TextStyle(
                             fontSize: 20,
-                            color: Colors.white,
+                            color: Colors.lightGreen,
                             fontWeight: FontWeight.w400),
                       )
                     ],
