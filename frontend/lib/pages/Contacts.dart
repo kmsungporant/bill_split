@@ -18,22 +18,54 @@ class Contacts extends StatelessWidget {
           preferredSize: const Size.fromHeight(60),
           child: BaseAppBar(headerStr: "Upload Receipt")),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          const Text(
+            "Orders",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           for (var i = 0; i < currBill.items.length; i++)
-            SizedBox(
-                width: 200.0,
-                height: 100.0,
-                child: Card(
-                    child: Text(currBill.items[i].name,
+            Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.only(top: 3),
+                child: ElevatedButton(
+                  
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.black,
+                    padding: EdgeInsets.all(20),
+                    shadowColor: Colors.black,
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                  ),
+                  onPressed: () {},
+                  child: Column(
+                    children: [
+                      Text(
+                        currBill.items[i].name,
                         style: TextStyle(
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.center)))
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        currBill.items[i].price.toString(),
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  ),
+                )),
         ],
       ),
-      
     );
   }
 }
