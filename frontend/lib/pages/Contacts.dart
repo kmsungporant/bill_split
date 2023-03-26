@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'widget/BaseAppBar.dart';
 
-class ContactInfo extends StatelessWidget {
-  const ContactInfo({super.key});
+class Contacts extends StatelessWidget {
+  const Contacts({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60),
-          child: BaseAppBar(headerStr: "Contact Info")),
+          child: BaseAppBar(headerStr: "Contacts")),
     );
   }
 }
