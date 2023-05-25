@@ -9,7 +9,7 @@ class BaseAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text("Bill Split"),
-      backgroundColor: Colors.lightGreen,
+      backgroundColor: Colors.lightGreen[100]!,
       automaticallyImplyLeading: true,
     );
   }

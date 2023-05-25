@@ -7,6 +7,7 @@ def venmo_setup():
     usrname = '*frontend input'
     psswrd = '*frontend input'
 
+
     access_token = Client.get_access_token(username=usrname, password=psswrd)
     print("My token:", access_token)
 
@@ -22,7 +23,7 @@ class make_friend():
 
 def venmo_friends():
     """
-    Returns list of friends as objects (name, pfp)
+    Returns list of friends as objects (name, pfp, user_id)
     """
     global friends_list
     friends = venmo.user.get_user_friends_list(user = own_obj)
